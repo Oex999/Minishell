@@ -6,7 +6,7 @@
 #    By: oexall <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/20 08:38:50 by oexall            #+#    #+#              #
-#    Updated: 2016/06/20 15:16:01 by oexall           ###   ########.fr        #
+#    Updated: 2016/06/21 08:23:22 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ quick:
 	@echo "Compiling $(NAME) Binary"
 	@$(CC) $(NAME) $(CLFAGS) $(SRC) $(LIBFT)
 	@echo "Compiled $(NAME)"
+	./$(NAME)
 
 clean:
 	@echo "Cleaning"
