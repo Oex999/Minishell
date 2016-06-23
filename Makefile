@@ -6,13 +6,19 @@
 #    By: oexall <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/20 08:38:50 by oexall            #+#    #+#              #
-#    Updated: 2016/06/21 08:23:22 by oexall           ###   ########.fr        #
+#    Updated: 2016/06/23 10:43:38 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-SRC = main.c execute.c builtins_one.c
+SRC = main.c execute.c builtins_one.c error.c
+BI_SRC = ./builtins/cd.c \
+		 ./builtins/setenv.c
+U_SRC = ./utils/getenv.c \
+		./utils/putenv.c \
+		./utils/updateenv.c
+M_SRC = $(SRC) $(BI_SRC) $(U_SRC)
 
 CC = gcc -o
 CFLAGS = -Wall -Werror -Wall
@@ -27,16 +33,14 @@ $(NAME):
 	@make -C libft
 	@echo "Compiled libft"
 	@echo "Compiling $(NAME) Binary"
-	@$(CC) $(NAME) $(CLFAGS) $(SRC) $(LIBFT)
+	@$(CC) $(NAME) $(CLFAGS) $(M_SRC) $(LIBFT)
 	@echo "Compiled $(NAME)"
-	./$(NAME)
 
 quick:
 	@clear
 	@echo "Compiling $(NAME) Binary"
-	@$(CC) $(NAME) $(CLFAGS) $(SRC) $(LIBFT)
+	@$(CC) $(NAME) $(CLFAGS) $(M_SRC) $(LIBFT)
 	@echo "Compiled $(NAME)"
-	./$(NAME)
 
 clean:
 	@echo "Cleaning"
@@ -58,5 +62,5 @@ me:
 
 norm:
 	@echo "Starting Norminette"
-	norminette $(SRC) minishell.h
+	norminette $(M_SRC) minishell.h
 	@echo "End of Norm"

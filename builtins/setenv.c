@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   setenv.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/20 08:32:16 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/20 16:41:31 by oexall           ###   ########.fr       */
+/*   Created: 2016/06/23 10:33:05 by oexall            #+#    #+#             */
+/*   Updated: 2016/06/23 13:14:28 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../includes/minishell.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
+int		ft_setenv(char **args, t_env **env)
+{
+	char	**split;
 
-void	ft_puterror(char *str);
-
-void	ft_loop(void);
-int		ft_execute(char **args);
-int		ft_launch(char **args);
-
-int		ft_pwd(void);
-int		ft_cd(char **args);
-int		ft_echo(char **args);
-
-#endif
+	if (args[1] == NULL)
+		return (ft_puterror("setenv", "No arguments provided"));
+	return (1);
+}

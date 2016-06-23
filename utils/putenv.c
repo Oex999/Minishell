@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   putenv.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/20 09:54:53 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/20 15:29:21 by oexall           ###   ########.fr       */
+/*   Created: 2016/06/23 08:46:11 by oexall            #+#    #+#             */
+/*   Updated: 2016/06/23 08:51:28 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
-void	ft_puterror(char *str)
+int	ft_putenv(t_env **env)
 {
-	ft_putendl(str);
+	int	i;
+
+	i = 0;
+	while ((*env)->env[i])
+	{
+		ft_printf("%s\n", (*env)->env[i]);
+		i++;
+	}
+	return (1);
 }

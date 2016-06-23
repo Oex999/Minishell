@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_one.c                                     :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/20 15:16:11 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/21 10:54:59 by oexall           ###   ########.fr       */
+/*   Created: 2016/06/21 10:57:31 by oexall            #+#    #+#             */
+/*   Updated: 2016/06/23 12:36:34 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#ifndef FT_ERRORS_H
+# define FT_ERRORS_H
 
-int		ft_pwd(void)
-{
-	char	*w_dir;
+# define E_NONEXISTANT "%s: No such file or directory: %s\n"
+# define E_INVALIDARGS "%s: String not in pwd: %s\n"
+# define E_DENIEDACCESS "%s: Permission Denied: %s\n"
+# define E_NOTDIR "%s: Not a directory: %s\n"
 
-	w_dir = getcwd(NULL, 0);
-	ft_printf("%s\n", w_dir);
-	free(w_dir);
-	return (1);
-}
+# define E_MALLOC "Failed to malloc"
+# define E_INVALIDVAR "No ENV with that name"
+# define E_NOARGS "Not enough Arguments"
 
-int		ft_echo(char **args)
-{
-	int	i;
-
-	i = 1;
-	while (args[i] != '\0' && args[i] && args[i] != NULL)
-	{
-		ft_printf("%s ", args[i]);
-		i++;
-	}
-	ft_printf("\n");
-	return (1);
-}
+#endif

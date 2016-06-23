@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_one.c                                     :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/20 15:16:11 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/21 10:54:59 by oexall           ###   ########.fr       */
+/*   Created: 2016/06/21 09:24:08 by oexall            #+#    #+#             */
+/*   Updated: 2016/06/23 12:42:34 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-int		ft_pwd(void)
+int		ft_puterror(char *arg, char *error)
 {
-	char	*w_dir;
-
-	w_dir = getcwd(NULL, 0);
-	ft_printf("%s\n", w_dir);
-	free(w_dir);
-	return (1);
-}
-
-int		ft_echo(char **args)
-{
-	int	i;
-
-	i = 1;
-	while (args[i] != '\0' && args[i] && args[i] != NULL)
-	{
-		ft_printf("%s ", args[i]);
-		i++;
-	}
-	ft_printf("\n");
+	ft_printf("%s: %s\n", arg, error);
 	return (1);
 }
