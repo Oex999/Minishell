@@ -6,39 +6,43 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 08:32:05 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/23 13:23:11 by oexall           ###   ########.fr       */
+/*   Updated: 2016/06/23 16:05:58 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-void	ft_loop(t_env *env)
+static char	**ft_copytab(char **env)
 {
-	char	*line;
-	char	**args;
-	int		status;
+	char	**tmp;
+	int		i;
+	int		j;
 
-	ft_getenv("LOGNAME", &env->username, &env);
-	status = 1;
-	while (status)
+	i = 0;
+	j = 0;
+	tmp = NULL;
+	while (env[i])
+		i++;
+	if (!(tmp = (char **)malloc(sizeof(char *) * (i + 1))))
+		ft_puterror("copy_env", "Memory allocation failed.");
+	while (env[j])
 	{
-		ft_printf("[%s]:", env->username);
-		get_next_line(0, &line);
-		args = ft_strsplit(line, ' ');
-		status = ft_execute(args, &env);
-		free(line);
-		free(args);
+		tmp[j] = ft_strdup(env[j]);
+		j++;
 	}
+	env[j] = NULL;
+	return (tmp);
 }
 
-int		main(int argc, char **argv, char **envi)
+int		main(int argc, char **argv, char **environ)
 {
 	t_env			env;
 
-	env.env = envi;
+	env.env = ft_copytab(environ);
 	env.pwd = getcwd(NULL, 0);
 	env.old_pwd = env.pwd;
 	ft_loop(&env);
 	free(env.path);
+	ft_deltab(env.env);
 	return (0);
 }

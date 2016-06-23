@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 15:08:55 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/23 10:36:52 by oexall           ###   ########.fr       */
+/*   Updated: 2016/06/23 16:30:01 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int		ft_execute(char **args, t_env **env)
 		return (ft_printf("%s\n", (*env)->pwd));
 	if (ft_strcmp(args[0], "setenv") == 0)
 		return (ft_setenv(args, env));
+	if (ft_strcmp(args[0], "unsetenv") == 0)
+		return (ft_unsetenv(args[1], env));
 	return (ft_launch(args));
 }
 

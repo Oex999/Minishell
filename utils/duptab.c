@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setenv.c                                           :+:      :+:    :+:   */
+/*   duptab.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/23 10:33:05 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/23 16:14:26 by oexall           ###   ########.fr       */
+/*   Created: 2016/06/23 15:31:55 by oexall            #+#    #+#             */
+/*   Updated: 2016/06/23 15:44:04 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int		ft_setenv(char **args, t_env **env)
+char	**ft_duptab(char **env, int len)
 {
-	int		i;
 	char	**tmp;
-	char	**split;
+	int		i;
 
-	if (args[1] == NULL)
-		return (ft_puterror("setenv", "No arguments provided"));
-	split = ft_strsplit(args[1], '=');
-	if (ft_getenv(split[0], NULL, env) != -1)
-		return (ft_update_env(split[0], split[1], env));
-	i = ft_count((*env)->env);
-	tmp = ft_duptab((*env)->env, i + 1);
-	tmp[i] = ft_strdup(args[1]);
-	ft_deltab((*env)->env);
-	(*env)->env = tmp;
-	return (1);
+	if (!(tmp = (char **)malloc(sizeof(char *) * (len + 1))))
+		return (NULL);
+	i = -1;
+	while (env[++i] && i < len)
+		tmp[i] = ft_strdup(env[i]);
+	while (++i < len)
+		tmp[i][0] = '\0';
+	tmp[len] = NULL;
+	return (tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 08:32:16 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/23 13:16:18 by oexall           ###   ########.fr       */
+/*   Updated: 2016/06/23 16:28:24 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ int				ft_launch(char **args);
 int				ft_cd(char **args, t_env **env);
 int				ft_echo(char **args);
 int				ft_setenv(char **args, t_env **env);
+int				ft_unsetenv(char *name, t_env **env);
+
+char			**ft_duptab(char **env, int len);
+void			ft_deltab(char **env);
 
 int				ft_getenv(char *search, char **value, t_env **environ);
 int				ft_putenv(t_env **env);
