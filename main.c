@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 08:32:05 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/23 16:05:58 by oexall           ###   ########.fr       */
+/*   Updated: 2016/06/23 16:38:19 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		main(int argc, char **argv, char **environ)
 	env.old_pwd = env.pwd;
 	ft_loop(&env);
 	free(env.path);
+	free(env.pwd);
 	ft_deltab(env.env);
 	return (0);
 }
