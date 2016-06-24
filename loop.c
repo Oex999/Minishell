@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 15:53:48 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/24 13:25:53 by oexall           ###   ########.fr       */
+/*   Updated: 2016/06/24 13:34:54 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_loop(t_env *env)
 	{
 		line = NULL;
 		args = NULL;
-		ft_printf("[%s]:", env->username);
+		ft_printf("[%s]: ", env->username);
 		get_next_line(0, &line);
 		args = ft_split(line);
 		status = ft_execute(args, &env);
