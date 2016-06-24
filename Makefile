@@ -6,7 +6,7 @@
 #    By: oexall <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/20 08:38:50 by oexall            #+#    #+#              #
-#    Updated: 2016/06/24 14:53:08 by oexall           ###   ########.fr        #
+#    Updated: 2016/06/24 15:47:53 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ U_SRC = ./utils/getenv.c \
 		./utils/ft_pathto.c
 M_SRC = $(SRC) $(BI_SRC) $(U_SRC)
 
-CC = gcc -o
+CC = gcc -g -o
 CFLAGS = -Wall -Werror -Wall
 LIBFT = -L ./libft/ -lft
 
