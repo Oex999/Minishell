@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 15:08:55 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/24 08:36:16 by oexall           ###   ########.fr       */
+/*   Updated: 2016/06/24 09:36:22 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_result(char **args, t_env **env)
 	int		index;
 	char	*n_path;
 
-	path = ft_pathto((*env)->pwd, args[0]);
+	path = ft_pathto((*env)->pwd, args[0], '/');
 	if (execve(path, args, NULL) != -1)
 		return (1);
 	ft_strdel(&path);
@@ -30,7 +30,7 @@ int		ft_result(char **args, t_env **env)
 	ft_strdel(&path);
 	while (all_paths[index] != NULL)
 	{
-		n_path = ft_pathto(all_paths[index], args[0]);
+		n_path = ft_pathto(all_paths[index], args[0], '/');
 		if (execve(n_path, args, NULL) != -1)
 		{
 			ft_strdel(&n_path);

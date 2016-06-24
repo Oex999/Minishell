@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 15:53:48 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/24 07:58:48 by oexall           ###   ########.fr       */
+/*   Updated: 2016/06/24 09:32:32 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_loop(t_env *env)
 		args = ft_strsplit(line, ' ');
 		status = ft_execute(args, &env);
 		free(line);
-		free(args);
+		ft_deltab(args);
 	}
 	free(env->username);
 }

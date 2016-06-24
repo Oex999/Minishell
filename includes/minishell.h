@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 08:32:16 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/24 08:40:14 by oexall           ###   ########.fr       */
+/*   Updated: 2016/06/24 09:35:50 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct	s_env
 
 int				ft_puterror(char *arg, char *error);
 int				ft_count(char **args);
-char			*ft_pathto(char *path1, char *path2);
+char			*ft_pathto(char *path1, char *path2, char sep);
 
 void			ft_loop(t_env *env);
 int				ft_execute(char **args, t_env **env);
