@@ -6,7 +6,7 @@
 #    By: oexall <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/20 08:38:50 by oexall            #+#    #+#              #
-#    Updated: 2016/06/23 16:28:42 by oexall           ###   ########.fr        #
+#    Updated: 2016/06/24 08:39:51 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ U_SRC = ./utils/getenv.c \
 		./utils/putenv.c \
 		./utils/updateenv.c \
 		./utils/duptab.c \
-		./utils/deltab.c
+		./utils/deltab.c \
+		./utils/ft_pathto.c
 M_SRC = $(SRC) $(BI_SRC) $(U_SRC)
 
 CC = gcc -o
@@ -65,5 +66,5 @@ me:
 
 norm:
 	@echo "Starting Norminette"
-	norminette $(M_SRC) minishell.h
+	norminette $(M_SRC) includes/minishell.h includes/errors.h
 	@echo "End of Norm"

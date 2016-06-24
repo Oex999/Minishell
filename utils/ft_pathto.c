@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop.c                                             :+:      :+:    :+:   */
+/*   ft_pathto.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/23 15:53:48 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/24 07:58:48 by oexall           ###   ########.fr       */
+/*   Created: 2016/06/24 08:19:29 by oexall            #+#    #+#             */
+/*   Updated: 2016/06/24 08:36:30 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "../includes/minishell.h"
 
-void	ft_loop(t_env *env)
+char	*ft_pathto(char *path1, char *path2)
 {
-	char	*line;
-	char	**args;
-	int		status;
+	char	*n_path;
+	int		len;
+	int		i;
 
-	ft_getenv("LOGNAME", &env->username, &env);
-	status = 1;
-	while (status)
+	len = ft_strlen(path1) + ft_strlen(path2) + 2;
+	if (!(n_path = (char *)malloc(sizeof(char) * len)))
+		return (NULL);
+	i = 0;
+	while (*path1)
 	{
-		line = NULL;
-		args = NULL;
-		ft_printf("[%s]:", env->username);
-		get_next_line(0, &line);
-		args = ft_strsplit(line, ' ');
-		status = ft_execute(args, &env);
-		free(line);
-		free(args);
+		n_path[i++] = *path1;
+		path1++;
 	}
-	free(env->username);
+	n_path[i++] = '/';
+	while (*path2)
+	{
+		n_path[i++] = *path2;
+		path2++;
+	}
+	n_path[len] = '\0';
+	return (n_path);
 }

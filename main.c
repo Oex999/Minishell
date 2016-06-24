@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 08:32:05 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/23 16:38:19 by oexall           ###   ########.fr       */
+/*   Updated: 2016/06/24 08:35:54 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	**ft_copytab(char **env)
 	return (tmp);
 }
 
-int		main(int argc, char **argv, char **environ)
+int			main(int argc, char **argv, char **environ)
 {
 	t_env			env;
 
