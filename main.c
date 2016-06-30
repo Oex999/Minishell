@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 08:32:05 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/24 10:13:23 by oexall           ###   ########.fr       */
+/*   Updated: 2016/06/30 06:43:21 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	**ft_copytab(char **env)
 		tmp[j] = ft_strdup(env[j]);
 		j++;
 	}
-	env[j] = NULL;
+	tmp[j] = NULL;
 	return (tmp);
 }
 
