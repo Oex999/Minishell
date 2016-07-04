@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 08:32:16 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/24 10:13:05 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/04 07:43:44 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char			**ft_duptab(char **env, int len);
 void			ft_deltab(char **env);
 
 int				ft_getenv(char *search, char **value, t_env **environ);
+char			*ft_getenvstr(char *search, t_env *environ);
 int				ft_putenv(t_env **env);
 int				ft_update_env(char *var, char *value, t_env **env);
 

@@ -6,11 +6,26 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 07:31:52 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/24 09:44:36 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/04 07:59:48 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+char	*ft_getenvstr(char *search, t_env *envi)
+{
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	while (envi->env[i])
+	{
+		if (ft_strncmp(envi->env[i], search, ft_strlen(search)) == 0)
+			return (ft_strchr(envi->env[i], '='));
+		i++;
+	}
+	return (NULL);
+}
 
 int	ft_getenv(char *search, char **value, t_env **environ)
 {
