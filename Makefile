@@ -6,7 +6,7 @@
 #    By: oexall <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/20 08:38:50 by oexall            #+#    #+#              #
-#    Updated: 2016/07/08 07:39:57 by oexall           ###   ########.fr        #
+#    Updated: 2016/07/08 09:15:32 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ all: $(NAME)
 
 $(NAME):
 	@clear
-	@rm $(NAME)
 	@echo "Compiling libft..."
 	@make -C libft fclean
 	@make -C libft

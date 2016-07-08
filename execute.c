@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 15:08:55 by oexall            #+#    #+#             */
-/*   Updated: 2016/07/07 15:31:47 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/08 09:31:02 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		ft_result(char **args, t_env **env)
 	while (all_paths[index] != NULL)
 	{
 		n_path = ft_pathto(all_paths[index], args[0], '/');
-		if (execve(n_path, args, NULL) != -1)
+		if (execve(n_path, args, (*env)->env) != -1)
 		{
 			ft_strdel(&n_path);
 			return (1);
@@ -50,7 +50,7 @@ int		ft_execute(char **args, t_env **env)
 	else if (ft_strncmp(args[0], "clear", 5) == 0)
 		return (ft_printf("\033c"));
 	else if (ft_strncmp(args[0], "echo", 4) == 0)
-		return (ft_echo(args));
+		return (ft_echo(args, env));
 	else if (ft_strncmp(args[0], "cd", 2) == 0)
 		return (ft_cd(args, env));
 	else if (ft_strncmp(args[0], "env", 3) == 0)

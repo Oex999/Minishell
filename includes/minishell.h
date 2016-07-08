@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 08:32:16 by oexall            #+#    #+#             */
-/*   Updated: 2016/07/04 07:43:44 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/08 09:31:50 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int				ft_launch(char **args, t_env **env);
 char			**ft_split(char *str);
 
 int				ft_cd(char **args, t_env **env);
-int				ft_echo(char **args);
+int				ft_echo(char **args, t_env **env);
 int				ft_setenv(char **args, t_env **env);
 int				ft_unsetenv(char *name, t_env **env);
 

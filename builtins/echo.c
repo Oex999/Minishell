@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 14:46:20 by oexall            #+#    #+#             */
-/*   Updated: 2016/07/07 15:45:08 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/08 10:01:14 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,26 @@ void	print_hidden(char hc)
 		ft_printf("\b");
 }
 
-void	print_echo(char *str)
+int		ft_printenv(char *var, t_env **env)
+{
+	char	*search;
+	char	*value;
+	int		len;
+
+	value = NULL;
+	len = 0;
+	while (var[len] != ' ' && var[len] && var[len] != '\"')
+		len++;
+	search = ft_strsub(var, 0, len);
+	if (ft_getenv(search, &value, env) != -1)
+		ft_printf("%s", value);
+	free(search);
+	if (value != NULL)
+		free(value);
+	return (len + 1);
+}
+
+void	print_echo(char *str, t_env **env)
 {
 	int	i;
 	int	in_q;
@@ -40,6 +59,8 @@ void	print_echo(char *str)
 	i += (str[i] == '\"');
 	while (str[i] != '\0')
 	{
+		if (str[i] == '$')
+			i += ft_printenv(&str[i + 1], env);
 		if (str[i] == '\\' && str[i + 1] != '\0')
 		{
 			if (str[i + 1] == '\\')
@@ -55,7 +76,7 @@ void	print_echo(char *str)
 	}
 }
 
-int		ft_echo(char **args)
+int		ft_echo(char **args, t_env **env)
 {
 	int	i;
 	int	is_n;
@@ -68,7 +89,7 @@ int		ft_echo(char **args)
 		is_n = i++;
 	while (args[i] != NULL)
 	{
-		print_echo(args[i]);
+		print_echo(args[i], env);
 		if (args[i + 1] != NULL)
 			ft_putchar(' ');
 		i++;
