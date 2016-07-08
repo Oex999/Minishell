@@ -6,15 +6,24 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 15:53:48 by oexall            #+#    #+#             */
-/*   Updated: 2016/07/08 10:19:09 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/08 14:39:58 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
+char	**ft_splitcommands(char *str)
+{
+	char	**cmds;
+
+	cmds = ft_strsplit(str, ';');
+	return (cmds);
+}
+
 void	ft_loop(t_env *env)
 {
 	char	*line;
+	char	**cmds;
 	char	**args;
 	int		status;
 
@@ -23,14 +32,17 @@ void	ft_loop(t_env *env)
 	ft_printf("\033c");
 	while (status)
 	{
-		line = NULL;
-		args = NULL;
 		ft_printf("[%s]$>", env->username);
 		get_next_line(0, &line);
-		args = ft_split(line);
-		status = ft_execute(args, &env);
-		free(line);
-		ft_deltab(args);
+		cmds = ft_splitcommands(line);
+		while (*cmds)
+		{
+			args = ft_split(*cmds);
+			status = ft_execute(args, &env);
+			if (status == 0)
+				break ;
+			cmds++;
+		}
 	}
 	free(env->username);
 }
