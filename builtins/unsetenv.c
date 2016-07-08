@@ -6,31 +6,31 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 16:22:55 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/23 16:27:59 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/08 12:51:18 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	ft_unsetenv(char *name, t_env **env)
+int	ft_unsetenv(char **args, t_env **env)
 {
 	int		res;
 	int		i;
-	char	**env_ptr;
 
 	res = 0;
 	i = 0;
-	env_ptr = (*env)->env;
-	while (*name && env_ptr[i])
+	if (args[0] && !(args[1]))
+		return (ft_puterror("unsetenv", "Argument Needed"));
+	while (args[0] && (*env)->env[i])
 	{
-		if (ft_strncmp(env_ptr[i], name, ft_strlen(name)) == 0)
+		if (ft_strncmp((*env)->env[i], args[1], ft_strlen(args[0])) == 0)
 		{
-			ft_strdel(&env_ptr[i]);
+			ft_strdel(&(*env)->env[i]);
 			res = 1;
-			while (env_ptr[i + 1])
+			while ((*env)->env[i + 1])
 			{
-				env_ptr[i] = env_ptr[i + 1];
-				env_ptr[i + 1] = NULL;
+				(*env)->env[i] = (*env)->env[i + 1];
+				(*env)->env[i + 1] = NULL;
 				++i;
 			}
 		}
