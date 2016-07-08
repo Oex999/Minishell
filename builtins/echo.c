@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 14:46:20 by oexall            #+#    #+#             */
-/*   Updated: 2016/07/08 12:02:53 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/08 12:09:06 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ int		ft_echo(char **args, t_env **env)
 	is_n = 0;
 	if (ft_strcmp(args[i], "echo") == 0)
 		i++;
-	if (ft_strcmp(args[i], "-n") == 0)
+	if (args[i] && ft_strcmp(args[i], "-n") == 0)
 		is_n = i++;
-	while (args[i] != NULL)
+	while (args[i] && args[i] != NULL)
 	{
 		print_echo(args[i], env);
 		if (args[i + 1] != NULL)
