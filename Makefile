@@ -6,7 +6,7 @@
 #    By: oexall <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/20 08:38:50 by oexall            #+#    #+#              #
-#    Updated: 2016/06/24 15:47:53 by oexall           ###   ########.fr        #
+#    Updated: 2016/07/08 07:39:57 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ U_SRC = ./utils/getenv.c \
 		./utils/ft_pathto.c
 M_SRC = $(SRC) $(BI_SRC) $(U_SRC)
 
-CC = gcc -g -o
+CC = gcc -o
 CFLAGS = -Wall -Werror -Wall
 LIBFT = -L ./libft/ -lft
 
@@ -33,18 +33,19 @@ all: $(NAME)
 
 $(NAME):
 	@clear
+	@rm $(NAME)
 	@echo "Compiling libft..."
 	@make -C libft fclean
 	@make -C libft
 	@echo "Compiled libft"
 	@echo "Compiling $(NAME) Binary"
-	@$(CC) $(NAME) $(CLFAGS) $(M_SRC) $(LIBFT)
+	@$(CC) $(NAME) $(CFLAGS) $(M_SRC) $(LIBFT)
 	@echo "Compiled $(NAME)"
 
 quick:
 	@clear
 	@echo "Compiling $(NAME) Binary"
-	@$(CC) $(NAME) $(CLFAGS) $(M_SRC) $(LIBFT)
+	@$(CC) $(NAME) $(CFLAGS) $(M_SRC) $(LIBFT)
 	@echo "Compiled $(NAME)"
 
 clean:

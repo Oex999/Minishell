@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 07:31:52 by oexall            #+#    #+#             */
-/*   Updated: 2016/07/04 07:59:48 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/07 06:41:10 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	*ft_getenvstr(char *search, t_env *envi)
 {
 	int		i;
-	char	*tmp;
 
 	i = 0;
 	while (envi->env[i])
@@ -27,11 +26,10 @@ char	*ft_getenvstr(char *search, t_env *envi)
 	return (NULL);
 }
 
-int	ft_getenv(char *search, char **value, t_env **environ)
+int		ft_getenv(char *search, char **value, t_env **environ)
 {
 	t_env	*env;
 	int		index;
-	char	*val;
 
 	env = *environ;
 	index = 0;

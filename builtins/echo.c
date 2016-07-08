@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 14:46:20 by oexall            #+#    #+#             */
-/*   Updated: 2016/06/24 15:40:47 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/07 15:45:08 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,14 @@ void	print_echo(char *str)
 int		ft_echo(char **args)
 {
 	int	i;
+	int	is_n;
 
 	i = 0;
+	is_n = 0;
 	if (ft_strcmp(args[i], "echo") == 0)
 		i++;
+	if (ft_strcmp(args[i], "-n") == 0)
+		is_n = i++;
 	while (args[i] != NULL)
 	{
 		print_echo(args[i]);
@@ -69,6 +73,9 @@ int		ft_echo(char **args)
 			ft_putchar(' ');
 		i++;
 	}
-	ft_putchar('\n');
+	if (is_n == 0)
+		ft_putchar('\n');
+	else
+		ft_printf("\e[48;5;254m\e[38;5;0m%%\e[0m\n");
 	return (1);
 }

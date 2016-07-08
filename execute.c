@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 15:08:55 by oexall            #+#    #+#             */
-/*   Updated: 2016/07/04 08:09:07 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/07 15:31:47 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,21 @@ int		ft_execute(char **args, t_env **env)
 {
 	if (args[0] == NULL)
 		return (1);
-	if (ft_strncmp(args[0], "exit", 4) == 0)
+	else if (ft_strncmp(args[0], "exit", 4) == 0)
 		return (0);
-	if (ft_strncmp(args[0], "clear", 5) == 0)
+	else if (ft_strncmp(args[0], "clear", 5) == 0)
 		return (ft_printf("\033c"));
-	if (ft_strncmp(args[0], "echo", 4) == 0)
+	else if (ft_strncmp(args[0], "echo", 4) == 0)
 		return (ft_echo(args));
-	if (ft_strncmp(args[0], "cd", 2) == 0)
+	else if (ft_strncmp(args[0], "cd", 2) == 0)
 		return (ft_cd(args, env));
-	if (ft_strncmp(args[0], "env", 3) == 0)
+	else if (ft_strncmp(args[0], "env", 3) == 0)
 		return (ft_putenv(env));
-	if (ft_strncmp(args[0], "pwd", 3) == 0)
+	else if (ft_strncmp(args[0], "pwd", 3) == 0)
 		return (ft_printf("%s\n", (*env)->pwd));
-	if (ft_strncmp("setenv", args[0], 6) == 0)
+	else if (ft_strncmp("setenv", args[0], 6) == 0)
 		return (ft_setenv(args, env));
-	if (ft_strncmp("unsetenv", args[0], 8) == 0)
+	else if (ft_strncmp("unsetenv", args[0], 8) == 0)
 		return (ft_unsetenv(args[1], env));
 	return (ft_launch(args, env));
 }

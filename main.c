@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 08:32:05 by oexall            #+#    #+#             */
-/*   Updated: 2016/07/04 10:21:36 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/07 06:40:48 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char	**ft_copytab(char **env)
 	char	**tmp;
 	int		i;
 
-	ft_printf("%s\n", env[0]);
 	i = 0;
 	while (env[i])
 		i++;
@@ -32,9 +31,8 @@ char	**ft_copytab(char **env)
 	return (tmp);
 }
 
-int			main(int argc, char **argv)
+int		main(int argc, char **argv, char **environ)
 {
-	extern char		**environ;
 	t_env			env;
 
 	env.env = ft_copytab(environ);
