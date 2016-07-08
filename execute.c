@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 15:08:55 by oexall            #+#    #+#             */
-/*   Updated: 2016/07/08 09:31:02 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/08 10:37:23 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_result(char **args, t_env **env)
 	char	*n_path;
 
 	path = ft_pathto((*env)->pwd, args[0], '/');
-	if (execve(path, args, NULL) != -1)
+	if (execve(path, args, (*env)->env) != -1)
 		return (1);
 	ft_strdel(&path);
 	path = NULL;
