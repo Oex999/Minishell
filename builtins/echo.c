@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 14:46:20 by oexall            #+#    #+#             */
-/*   Updated: 2016/07/08 10:01:14 by oexall           ###   ########.fr       */
+/*   Updated: 2016/07/08 12:02:53 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	print_hidden(char hc)
 		ft_printf("\a");
 	else if (hc == 'b')
 		ft_printf("\b");
+	else if (hc == '\"')
+		ft_printf("\"");
 }
 
 int		ft_printenv(char *var, t_env **env)
